@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Findock Address Validator" icon-name="">
+            <div class="slds-p-around_medium">
+                <template if:true={loading}>
+                    <div class="slds-align_absolute-center">
+                        <lightning-spinner alternative-text="Loading" size="small" class="slds-is-relative"></lightning-spinner>
+                    </div>
+                </template>
+                <template if:false={loading}>
+                    <template if:true={contact.data}>
+                        <lightning-formatted-address
+                            street={street}
+                            city={city}
+                            country={country}
+                            province={state}
+                            postal-code={postalCode}
+                        ></lightning-formatted-address>
+
+                        <lightning-button label="Validate Address" variant="brand" title="Validate Address" onclick={validateAddress} class="slds-m-top_medium"></lightning-button>
+                    </template>
+                </template>
+            </div>
+    </lightning-card>
+</template>

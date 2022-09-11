@@ -1,18 +1,15 @@
-# Salesforce DX Project: Next Steps
+# Findock Assessment
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Creating a LWC (fndAddressValidator) to validate the address on a contact. This LWC will be displayed as a seperate component on the Contact page (FND_Contact_Lightning_Page) and will retrieve the mailing address and display it alongside a button.
 
-## How Do You Plan to Deploy Your Changes?
+The button serves to start a validation process by performing a callout with values provided by the contact record, in this case we provide the LWC with the MailingAddress.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Used the https://api.geoapify.com API as a validator. A remote site setting (GeoApify) is setup to allow callouts to this endpoint. 
+The API will return a confidence ratio of the address retrieved in the request. I've set a threshold on this confidence ratio and if it exceeds it we count it as valid.
 
-## Configure Your Salesforce DX Project
+The API key and confidence threshold are saved in a custom setting (FND_Address_Validation_Settings__c) for dynamic changing.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+For the request I've setup a request and response DTO (FND_AddressRequestDTO / FND_AddressResponseDTO) which can be used to process the data in Salesforce. These DTO's are used by the service class (FND_AddressAPIService) which performs the callout.
+The service class is called by the controller class (FND_AddressValidatorCtrl) of the LWC for reusability.
 
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+In case of address validation success: update the Contact.Address_Validation__c field to true, to identify if the address is validated. The opposite will happen if address is not validated (Contact.Address_Validation__c field is set to false)

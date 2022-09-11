@@ -1,0 +1,64 @@
+{
+  "type": "FeatureCollection",
+  "query": {
+    "text": "",
+    "parsed": {
+      "street": "adriaan van ostadestraat",
+      "postcode": "1318lk",
+      "housenumber": "55",
+      "expected_type": "building",
+      "country": "nederland",
+      "city": "almere"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "suburb": "Tussen de Vaarten",
+        "street": "Adriaan van Ostadestraat",
+        "state_code": "FL",
+        "state": "Flevoland",
+        "result_type": "building",
+        "rank": {
+          "popularity": "6.597323663129353",
+          "match_type": "full_match",
+          "importance": "0.411",
+          "confidence_street_level": "1",
+          "confidence_city_level": "1",
+          "confidence": "1"
+        },
+        "postcode": "1318LK",
+        "place_id": "511aa144f0640415405937291609b7304a40f00103f9010bff6fa900000000c00203",
+        "lon": "5.2542913",
+        "lat": "52.3805858",
+        "housenumber": "55",
+        "formatted": "Adriaan van Ostadestraat 55, 1318 LK Almere, Netherlands",
+        "datasource": {
+          "url": "https://www.openstreetmap.org/copyright",
+          "sourceName": "openstreetmap",
+          "license": "Open Database License",
+          "attribution": "© OpenStreetMap contributors"
+        },
+        "country_code": "nl",
+        "country": "Netherlands",
+        "city": "Almere",
+        "address_line2": "1318 LK Almere, Netherlands",
+        "address_line1": "Adriaan van Ostadestraat 55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "5.2542913",
+          "52.3805858"
+        ]
+      },
+      "bbox": [
+        "5.2542413",
+        "52.3805358",
+        "5.2543413",
+        "52.3806358"
+      ]
+    }
+  ]
+}
